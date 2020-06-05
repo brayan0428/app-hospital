@@ -9,6 +9,7 @@ import { RegisterComponent } from './login/register.component';
 import { PagesModule } from './pages/pages.module';
 
 import { APP_ROUTES } from './app.routing';
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,3 +1,5 @@
+declare function init_plugins()
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,6 +12,7 @@ export class PagesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    init_plugins()
   }
 
 }

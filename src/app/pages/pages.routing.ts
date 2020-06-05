@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from "@angular/router";
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NopagefoundComponent } from '../shared/nopagefound/nopagefound.component';
 
 const pagesRoutes:Routes = [
   {
