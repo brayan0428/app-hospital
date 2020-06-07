@@ -1,6 +1,7 @@
 declare function init_plugins()
+declare const gapi:any;
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../services/usuario.service';
@@ -14,7 +15,8 @@ import { Usuario } from '../models/usuario.model';
 export class LoginComponent implements OnInit {
   recuerdame:boolean = false;
   email:string = ""
-  constructor(private _router:Router, private usuarioService:UsuarioService) { }
+  auth2:any;
+  constructor(private _router:Router, private usuarioService:UsuarioService, private zone:NgZone) { }
 
   ngOnInit(): void {
     init_plugins()
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
     if(this.email != ''){
       this.recuerdame = true
     }
+    this.googleInit()
   }
 
   onSubmit(form:NgForm){
@@ -32,5 +35,27 @@ export class LoginComponent implements OnInit {
     }
 
     this.usuarioService.login(usuario,form.value.recuerdame).subscribe(() => this._router.navigate(["/dashboard"]))
+  }
+
+  googleInit(){
+    gapi.load("auth2", () => {
+      this.auth2 = gapi.auth2.init({
+        client_id: "49900425369-t9dmlsdj9i2jhdfcnn18da4b4pnmjern.apps.googleusercontent.com",
+        cookiepolicy: "single_host_origin",
+        scope: "profile email"
+      })
+      this.attachSigin(document.getElementById("btnGoogle"))
+    })
+  }
+
+  attachSigin(element){
+    this.auth2.attachClickHandler(element, {}, googleUser => {
+      let token = googleUser.getAuthResponse().id_token
+      this.usuarioService.loginGoogle(token).subscribe(data => {
+        this.zone.run(() => {
+          this._router.navigate(["/dashboard"])
+        })
+      })
+    })
   }
 }
