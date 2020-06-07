@@ -5,15 +5,12 @@ import { NopagefoundComponent } from '../shared/nopagefound/nopagefound.componen
 
 const pagesRoutes:Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: PagesComponent,
     children: [
       {
-        path: 'dashboard',
+        path: '',
         component: DashboardComponent
-      },
-      {
-        path: '', redirectTo: '/dashboard', pathMatch:'full'
       }
     ]
   },
