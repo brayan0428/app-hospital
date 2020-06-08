@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       password:form.value.password
     }
 
-    this.usuarioService.login(usuario,form.value.recuerdame).subscribe(() => this._router.navigate(["/dashboard"]))
+    this.usuarioService.login(usuario,form.value.recuerdame).subscribe(() => this._router.navigate(["/admin/dashboard"]))
   }
 
   googleInit(){
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       let token = googleUser.getAuthResponse().id_token
       this.usuarioService.loginGoogle(token).subscribe(data => {
         this.zone.run(() => {
-          this._router.navigate(["/dashboard"])
+          this._router.navigate(["/admin/dashboard"])
         })
       })
     })

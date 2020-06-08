@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class UsuarioService {
   token;
-  usuario;
+  usuario:Usuario;
   
   constructor(private http:HttpClient, private router:Router) {
     this.loadData()
@@ -74,5 +74,16 @@ export class UsuarioService {
     localStorage.removeItem("usuario")
     localStorage.removeItem("id")
     this.router.navigate(["/"])
+  }
+
+  actualizarUsuario(usuario:Usuario){
+    return this.http.put(`${environment.URL_API}/usuario/${this.usuario._id}?token=${this.token}`, usuario).pipe(
+      map((data) => {
+        this.usuario.nombre = usuario.nombre
+        this.usuario.email = usuario.email
+        this.guardarStorage(this.token,this.usuario._id,this.usuario)
+        return true
+      })
+    )
   }
 }

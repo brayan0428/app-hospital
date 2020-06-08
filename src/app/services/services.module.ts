@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SidebarService } from './sidebar.service';
 import { UsuarioService } from './usuario.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UploadService } from './upload.service';
 
 
 
@@ -13,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     SidebarService,
-    UsuarioService
+    UsuarioService,
+    UploadService
   ]
 })
 export class ServicesModule { }

@@ -11,7 +11,7 @@ export class SidebarService {
       submenu: [
         {
           titulo: 'Dashboard',
-          url: '/dashboard'
+          url: '/admin/dashboard'
         },
         {
           titulo: 'Prueba',
