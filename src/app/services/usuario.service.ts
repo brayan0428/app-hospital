@@ -77,13 +77,27 @@ export class UsuarioService {
   }
 
   actualizarUsuario(usuario:Usuario){
-    return this.http.put(`${environment.URL_API}/usuario/${this.usuario._id}?token=${this.token}`, usuario).pipe(
+    return this.http.put(`${environment.URL_API}/usuario/${usuario._id}?token=${this.token}`, usuario).pipe(
       map((data) => {
-        this.usuario.nombre = usuario.nombre
-        this.usuario.email = usuario.email
-        this.guardarStorage(this.token,this.usuario._id,this.usuario)
+        if(this.usuario._id === usuario._id){
+          this.usuario.nombre = usuario.nombre
+          this.usuario.email = usuario.email
+          this.guardarStorage(this.token,this.usuario._id,this.usuario)
+        }
+        Swal.fire("Confirmación", "Usuario actualizado exitosamente", "success")
         return true
       })
     )
+  }
+
+  consultarUsuarios(desde = 0){
+    return this.http.get(`${environment.URL_API}/usuario?desde=${desde}&token=${this.token}`)
+  }
+
+  eliminarUsuario(id){
+    return this.http.delete(`${environment.URL_API}/usuario/${id}?token=${this.token}`).pipe(map(data => {
+      Swal.fire("Confirmación", "Usuario eliminado exitosamente", "success")
+      return true
+    }))
   }
 }

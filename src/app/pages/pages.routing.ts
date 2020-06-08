@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NopagefoundComponent } from '../shared/nopagefound/nopagefound.component';
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const pagesRoutes:Routes = [
   {
@@ -18,6 +19,11 @@ const pagesRoutes:Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+
+      },
+      {
+        path: 'usuarios',
+        component: UsuariosComponent
 
       }
     ]

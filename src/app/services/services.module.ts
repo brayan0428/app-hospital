@@ -4,6 +4,7 @@ import { SidebarService } from './sidebar.service';
 import { UsuarioService } from './usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadService } from './upload.service';
+import { BusquedaService } from './busqueda.service';
 
 
 
@@ -15,7 +16,8 @@ import { UploadService } from './upload.service';
   providers: [
     SidebarService,
     UsuarioService,
-    UploadService
+    UploadService,
+    BusquedaService
   ]
 })
 export class ServicesModule { }

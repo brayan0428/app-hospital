@@ -18,7 +18,19 @@ export class SidebarService {
           url: '/prueba'
         }
       ]
+    },
+    {
+      titulo: 'Mantenimiento',
+      icono: 'mdi mdi-settings',
+      submenu: [
+        {
+          titulo: 'Usuarios',
+          url: '/admin/usuarios'
+        }
+      ]
     }
+
   ]
+
   constructor() { }
 }
