@@ -15,8 +15,8 @@ export class UploadService {
     this.usuario = this.usuarioService.usuario
   }
 
-  uploadImage(data,tipo){
-    return this.http.put(`${environment.URL_API}/upload/${tipo}/${this.usuario._id}`, data).pipe(map((data:any) => {
+  uploadImage(data,tipo, id = this.usuario._id){
+    return this.http.put(`${environment.URL_API}/upload/${tipo}/${id}`, data).pipe(map((data:any) => {
       Swal.fire("Confirmación", "Imagen actualizada exitosamente", "success")
       if(tipo == "usuario"){
         this.usuarioService.usuario.img = data.data.img

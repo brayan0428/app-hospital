@@ -8,13 +8,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PipesModule } from '../pipes/pipes.module';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     PagesComponent,
     ProfileComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    ModalUploadComponent
   ],
   exports: [
     DashboardComponent

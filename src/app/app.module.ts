@@ -15,7 +15,7 @@ import { ServicesModule } from './services/services.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [BrowserModule, APP_ROUTES, PagesModule,FormsModule,ReactiveFormsModule,ServicesModule],
   bootstrap: [AppComponent],

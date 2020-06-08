@@ -5,6 +5,7 @@ import { UsuarioService } from './usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadService } from './upload.service';
 import { BusquedaService } from './busqueda.service';
+import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
 
 
 
@@ -17,7 +18,8 @@ import { BusquedaService } from './busqueda.service';
     SidebarService,
     UsuarioService,
     UploadService,
-    BusquedaService
+    BusquedaService,
+    ModalUploadService
   ]
 })
 export class ServicesModule { }

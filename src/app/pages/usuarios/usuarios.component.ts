@@ -3,6 +3,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import Swal from 'sweetalert2';
 import { BusquedaService } from 'src/app/services/busqueda.service';
+import { ModalUploadService } from 'src/app/components/modal-upload/modal-upload.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -13,10 +14,14 @@ export class UsuariosComponent implements OnInit {
   usuarios:Usuario[] = []
   desde:number = 0
   totalRegistros:number = 0
-  constructor(private usuarioService:UsuarioService, private busquedaService:BusquedaService) { }
+  constructor(private usuarioService:UsuarioService, private busquedaService:BusquedaService, private modalUploadService:ModalUploadService) { }
 
   ngOnInit(): void {
     this.cargarUsuarios()
+
+    this.modalUploadService.notificar.subscribe(() => {
+      this.cargarUsuarios()
+    })
   }
 
   cargarUsuarios(){
@@ -75,5 +80,9 @@ export class UsuariosComponent implements OnInit {
     this.busquedaService.consultarxColeccion(parametro,"usuario").subscribe(data => {
       this.usuarios = data
     })
+  }
+
+  abrirModal(id:string){
+    this.modalUploadService.abrirModal('usuario', id)
   }
 }
